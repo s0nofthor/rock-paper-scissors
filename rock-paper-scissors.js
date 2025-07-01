@@ -30,5 +30,15 @@ console.log(humanScore);
 console.log(computerScore);
 
 //Compare the computer and user's choices to see who wins the round
+function playRound(humanChoice, computerChoice) {
+    if ((getHumanChoice() === "Rock" && getComputerChoice() === "Paper") 
+        || (getHumanChoice() === "Paper" && getComputerChoice() === "Scissors") 
+        || (getHumanChoice() === "Scissors" && getComputerChoice() === "Rock")) {
+        result = `You lose! ${getComputerChoice()} beats ${getHumanChoice()}`;
+    }
+    return result;
+}
+console.log(playRound());
+
 //Give the winner a point on the scoreboard
 //Set full game to play for 5 rounds
