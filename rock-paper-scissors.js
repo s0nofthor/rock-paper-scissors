@@ -35,6 +35,10 @@ function playRound(humanChoice, computerChoice) {
         || (getHumanChoice() === "Paper" && getComputerChoice() === "Scissors") 
         || (getHumanChoice() === "Scissors" && getComputerChoice() === "Rock")) {
         result = `You lose! ${getComputerChoice()} beats ${getHumanChoice()}`;
+    } else if ((getHumanChoice() === "Rock" && getComputerChoice() === "Scissors") 
+        || (getHumanChoice() === "Paper" && getComputerChoice() === "Rock") 
+        || (getHumanChoice() === "Scissors" && getComputerChoice() === "Paper")) {
+        result = `You win! ${getHumanChoice()} beats ${getComputerChoice()}`;
     }
     return result;
 }
