@@ -20,24 +20,24 @@ function playGame() {
             result = "Scissors";
         }
         return result;
-    }
+    };
     console.log(getComputerChoice());
     //Log the user's choice of either rock, paper, or scissors
     function getHumanChoice() {
         return humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1).toLowerCase();
-    }
+    };
     console.log(getHumanChoice());
     
     //Compare the computer and user's choices to see who wins the round and give them the point
     function playRound(humanChoice, computerChoice) {
-        if ((getHumanChoice() === "Rock" && getComputerChoice() === "Paper") 
-            || (getHumanChoice() === "Paper" && getComputerChoice() === "Scissors") 
-            || (getHumanChoice() === "Scissors" && getComputerChoice() === "Rock")) {
-            result = `You lose! ${getComputerChoice()} beats ${getHumanChoice()}`;
-        } else if ((getHumanChoice() === "Rock" && getComputerChoice() === "Scissors") 
+        if ((getHumanChoice() === "Rock" && getComputerChoice() === "Scissors") 
             || (getHumanChoice() === "Paper" && getComputerChoice() === "Rock") 
             || (getHumanChoice() === "Scissors" && getComputerChoice() === "Paper")) {
             result = `You win! ${getHumanChoice()} beats ${getComputerChoice()}`;
+        } else if ((getHumanChoice() === "Rock" && getComputerChoice() === "Paper") 
+            || (getHumanChoice() === "Paper" && getComputerChoice() === "Scissors") 
+            || (getHumanChoice() === "Scissors" && getComputerChoice() === "Rock")) {
+            result = `You lose! ${getComputerChoice()} beats ${getHumanChoice()}`;
         } else {
             result = `It's a tie!`
         }
@@ -50,10 +50,20 @@ function playGame() {
         humanScore += 1;
     } else if (playRound() === `You lose! ${getComputerChoice()} beats ${getHumanChoice()}`) {
         computerScore += 1;
-    }
-    console.log(`User: ${humanScore} Bot: ${computerScore}`)
+    };
+    console.log(`User: ${humanScore} Bot: ${computerScore}`);
 };
 
 do {
     playGame.call();
 } while (humanScore < 3 && computerScore < 3);
+
+function finalResult(humanScore, computerScore) {
+    if (humanScore === 3) {
+        result = "You've come out on top, treat yourself!";
+    } else if (computerScore === 3) {
+        result = "You might wanna give it another shot, if you don't want to be beat by a bot";
+    };
+    return result;
+};
+console.log(finalResult(humanScore, computerScore));
