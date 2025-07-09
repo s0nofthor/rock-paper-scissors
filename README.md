@@ -1,0 +1,9 @@
+This is my build of a game of Rock, Paper, Scissors that is run through prompts and provides feedback through the console. The goal of this project is to demonstrate my understanding of JavaScript, which is the reason behind the lack of html beyond that needed to actually exist as a website.
+
+How to use:
+Simply follow the prompt and make your selection by typing either rock, paper, or scissors. It will compare your selection to that of the computer's and based on that decide which of you is the winner of the round, or if it's a tie. These results and the scoreboard are documented in the console when DevTools are open. First to three is the winner of the whole game.
+
+Biggest Challenges:
+This is my first project in JavaScript whatsoever so the usual speed bumps that arise from dealing in a new syntax were ran into. Despite this, I began to feel comfortable quite quickly. I was able to move through the machanics of having the game itself be played more easily than expected (something I credit to being taught to outline the process in plain english to help map out) but reached a troubling point while wrapping my mind around exactly how to get the scoreboard to properly function. I may have taken the same amount of time figuring my way around this as it took to actually piece together the base gameplay. I eventually even decided to scrub my work that I had been doing on that portion which I was concerned had made the rest of my code sloppy (or at least sloppier than I had made it from the get go). Going back to my last commit and tackling the section from scratch was a massive help which I'm thankful to Git for making possible. Once I realized that I wasn't being as explicit as I should have been things fell into place at a pace similar to what I started at, something else I'm grateful for.
+
+Project instructions provided by https://www.theodinproject.com/lessons/foundations-rock-paper-scissors
