@@ -1,54 +1,56 @@
+const choices = document.getElementsByClassName('choice');
+
 //Create scoreboard
 let humanScore = 0;
 let computerScore = 0;
+let result;
 
-function playRound() { //Tie elements of round together
-    let humanChoice = prompt("Rock, paper, or scissors?", "");
-    let computerChoice = Math.random() * 3;
+for (i of choices) {
+    i.addEventListener('click', function(e) {
+        let humanChoice = e.target.id; //Choose clicked value
+        let computerChoice = Math.random() * 3; //Pick a random number
 
-    function getHumanChoice() { //Standardize input
-        return humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1).toLowerCase();
-    };
-    console.log(getHumanChoice());
-
-    function getComputerChoice() { //Translate random number to value
-        let result;
-        if (computerChoice < 1) {
-            result = "Rock";
-        } else if (computerChoice >= 1 && computerChoice <2) {
-            result = "Paper";
-        } else {
-            result = "Scissors";
-        }
-        return result;
-    };
-    console.log(getComputerChoice());
-
-    function roundWinner() { //Quantify win/lose conditions
-        if ((getHumanChoice() === "Rock" && getComputerChoice() === "Scissors")
-            || (getHumanChoice() === "Paper" && getComputerChoice() === "Rock")
-            || (getHumanChoice() === "Scissors" && getComputerChoice() === "Paper")) {
-            result = `You win! ${getHumanChoice()} beats ${getComputerChoice()}`;
-            ++humanScore;
-        } else if ((getHumanChoice() === "Rock" && getComputerChoice() === "Paper")
-            || (getHumanChoice() === "Paper" && getComputerChoice() === "Scissors")
-            || (getHumanChoice() === "Scissors" && getComputerChoice() === "Rock")) {
-            result = `You lose! ${getComputerChoice()} beats ${getHumanChoice()}`;
-            ++computerScore;
-        } else {
-            result = `It's a tie!`
+        function getComputerChoice() { //Translate random number to value
+            let result;
+            if (computerChoice < 1) {
+                result = "Rock";
+            } else if (computerChoice >= 1 && computerChoice <2) {
+                result = "Paper";
+            } else {
+                result = "Scissors";
+            }
+            return result;
         };
-        return result;
-    };
-    console.log(roundWinner());
-    console.log(`User: ${humanScore} Bot: ${computerScore}`);
-};
+        console.log(`${humanChoice} vs ${getComputerChoice()}`);
 
-do { //Loop gameplay for an entire game
-    playRound();
-} while (humanScore < 3 && computerScore < 3);
+        function roundWinner() { //Quantify win/lose conditions
+            if ((humanChoice === "Rock" && getComputerChoice() === "Scissors")
+                || (humanChoice === "Paper" && getComputerChoice() === "Rock")
+                || (humanChoice === "Scissors" && getComputerChoice() === "Paper")) {
+                result = `You win! ${humanChoice} beats ${getComputerChoice()}`;
+                ++humanScore;
+            } else if ((humanChoice === "Rock" && getComputerChoice() === "Paper")
+                || (humanChoice === "Paper" && getComputerChoice() === "Scissors")
+                || (humanChoice === "Scissors" && getComputerChoice() === "Rock")) {
+                result = `You lose! ${getComputerChoice()} beats ${humanChoice}`;
+                ++computerScore;
+            } else {
+                result = `It's a tie!`
+            };
+            return result;
+        };
+        console.log(roundWinner());
+        console.log(`User: ${humanScore} Bot: ${computerScore}`);
+    })
+}
 
-function finalResult(humanScore, computerScore) {
+
+    
+//do { //Loop gameplay for an entire game
+//    playRound();
+//} while (humanScore < 3 && computerScore < 3);
+
+function finalResult(humanScore, computerScore) { //Declare ultimate victor
     if (humanScore === 3) {
         result = "You've come out on top, treat yourself!";
     } else if (computerScore === 3) {
