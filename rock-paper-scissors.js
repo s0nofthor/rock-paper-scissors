@@ -3,7 +3,6 @@ const choices = document.getElementsByClassName('choice');
 //Create scoreboard
 let humanScore = 0;
 let computerScore = 0;
-let result;
 
 for (i of choices) {
     i.addEventListener('click', function(e) {
@@ -43,12 +42,6 @@ for (i of choices) {
         console.log(`User: ${humanScore} Bot: ${computerScore}`);
     })
 }
-
-
-    
-//do { //Loop gameplay for an entire game
-//    playRound();
-//} while (humanScore < 3 && computerScore < 3);
 
 function finalResult(humanScore, computerScore) { //Declare ultimate victor
     if (humanScore === 3) {
