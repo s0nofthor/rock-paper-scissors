@@ -1,4 +1,6 @@
 const choices = document.getElementsByClassName('choice');
+const outcome = document.getElementById('outcome');
+const scoreboard = document.getElementById('scoreboard');
 
 //Create scoreboard
 let humanScore = 0;
@@ -6,10 +8,13 @@ let computerScore = 0;
 
 for (i of choices) {
     i.addEventListener('click', function(e) {
-        let humanChoice = e.target.id; //Choose clicked value
-        let computerChoice = Math.random() * 3; //Pick a random number
+        //Choose clicked value
+        let humanChoice = e.target.id;
+        //Pick a random number
+        let computerChoice = Math.random() * 3;
 
-        function getComputerChoice() { //Translate random number to value
+        //Translate random number to value
+        function getComputerChoice() {
             let result;
             if (computerChoice < 1) {
                 result = "Rock";
@@ -20,9 +25,12 @@ for (i of choices) {
             }
             return result;
         };
-        console.log(`${humanChoice} vs ${getComputerChoice()}`);
+        const matchup = document.createElement('div');
+        outcome.appendChild(matchup);
+        matchup.innerText = `${humanChoice} vs ${getComputerChoice()}`;
 
-        function roundWinner() { //Quantify win/lose conditions
+        //Quantify win/lose conditions
+        function roundWinner() { 
             if ((humanChoice === "Rock" && getComputerChoice() === "Scissors")
                 || (humanChoice === "Paper" && getComputerChoice() === "Rock")
                 || (humanChoice === "Scissors" && getComputerChoice() === "Paper")) {
@@ -38,17 +46,25 @@ for (i of choices) {
             };
             return result;
         };
-        console.log(roundWinner());
-        console.log(`User: ${humanScore} Bot: ${computerScore}`);
+        const lilWinner = document.createElement('div');
+        outcome.appendChild(lilWinner);
+        lilWinner.innerText = `${roundWinner()}`;
+        scoreboard.innerText = `User: ${humanScore} Bot: ${computerScore}`;
+
+        //Declare ultimate victor
+        function finalResult(humanScore, computerScore) { 
+            if (humanScore === 5) {
+                result = "You've come out on top, you can stop!";
+            } else if (computerScore === 5) {
+                result = "Give it another shot if you don't want to be beat by a bot";
+            };
+            return result;
+        };
+        const bigWinner = document.createElement('div');
+
+        if (humanScore === 5 || computerScore === 5) {
+            outcome.appendChild(bigWinner);
+            bigWinner.innerText = `${finalResult(humanScore, computerScore)}`;
+        };
     })
 }
-
-function finalResult(humanScore, computerScore) { //Declare ultimate victor
-    if (humanScore === 3) {
-        result = "You've come out on top, treat yourself!";
-    } else if (computerScore === 3) {
-        result = "Give it another shot if you don't want to be beat by a bot";
-    };
-    return result;
-};
-console.log(finalResult(humanScore, computerScore));
