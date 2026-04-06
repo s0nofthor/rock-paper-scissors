@@ -1,0 +1,25 @@
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+}
+title{
+    display: none;
+}
+body {
+    margin: 0;
+}
+#buttons {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    height: 100vh;
+    gap: 3vh;
+}
+.choice {
+    height: 10vh;
+    width: 10rem;
+    justify-content: center;
+    font-size: 2rem;
+}
