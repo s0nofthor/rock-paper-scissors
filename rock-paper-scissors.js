@@ -70,8 +70,19 @@ for (i of choices) {
         const bigWinner = document.createElement('div');
 
         if (humanScore === 5 || computerScore === 5) {
-            outcome.appendChild(bigWinner);
+            buttons.remove(choices);
+            const central = document.getElementById('central');
+            const replay = document.createElement('BUTTON');
+            replay.id = 'replay';
+            replay.addEventListener('click', function() {
+                window.location.reload();
+            })
+            central.appendChild(bigWinner);
+            central.appendChild(replay);
             bigWinner.innerText = `${finalResult(humanScore, computerScore)}`;
+            replay.innerText = "Replay?";
         };
+
+        
     })
 }
