@@ -1,10 +1,13 @@
 const choices = document.getElementsByClassName('choice');
 const outcome = document.getElementById('outcome');
-const scoreboard = document.getElementById('scoreboard');
+const userScore = document.getElementById('userScore');
+const botScore = document.getElementById('botScore');
 
 //Create scoreboard
 let humanScore = 0;
 let computerScore = 0;
+userScore.innerText = `User: ${humanScore}`;
+botScore.innerText = `Bot: ${computerScore}`;
 
 for (i of choices) {
     i.addEventListener('click', function(e) {
@@ -25,9 +28,13 @@ for (i of choices) {
             }
             return result;
         };
-        const matchup = document.createElement('div');
-        outcome.appendChild(matchup);
-        matchup.innerText = `${humanChoice} vs ${getComputerChoice()}`;
+        const matchup = document.getElementById('matchup');
+        const uPick = document.getElementById('uPick');
+        const cPick = document.getElementById('cPick');
+        const vs = document.getElementById('vs');
+        uPick.innerText = `${humanChoice}`;
+        vs.innerText = 'vs';
+        cPick.innerText = `${getComputerChoice()}`;
 
         //Quantify win/lose conditions
         function roundWinner() { 
@@ -46,10 +53,10 @@ for (i of choices) {
             };
             return result;
         };
-        const lilWinner = document.createElement('div');
-        outcome.appendChild(lilWinner);
+        const lilWinner = document.getElementById('lilWinner');
         lilWinner.innerText = `${roundWinner()}`;
-        scoreboard.innerText = `User: ${humanScore} Bot: ${computerScore}`;
+        userScore.innerText = `User: ${humanScore}`;
+        botScore.innerText = `Bot: ${computerScore}`;
 
         //Declare ultimate victor
         function finalResult(humanScore, computerScore) { 
